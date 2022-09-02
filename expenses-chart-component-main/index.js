@@ -1,5 +1,6 @@
 const chart = document.querySelector('.bar-chart')
-const baby = document.querySelectorAll('.bar')
+const getBars = document.querySelectorAll('.bars')
+
 
 
 let day = new Date().getDay()
@@ -23,13 +24,16 @@ function createElement(elements, hasClass) {
 }
 
 function barChart(day,amount) {
-    const graph = createElement( 'div','width');
+    const graph = createElement( 'div','graph');
+    const ve = createElement('span', 'ww')
+    ve.textContent = amount
     const bars = createElement('div', 'bars');
     bars.style.height = `${amount * 3}px`;
     
     const days = document.createElement('h3');
     days.textContent = day
 
+    graph.appendChild(ve)
     graph.appendChild(bars)
     graph.appendChild(days)
 
@@ -43,18 +47,26 @@ function getCharts(display) {
         chart.appendChild(barchart)
     })
 
-    baby.forEach(babys => babys.addEventListener('mouseover', () => {
-        // showAmount(e)
-        console.log(done)
-    }))
+    // baby.forEach(babys => babys.addEventListener('mouseover', () => {
+    //     showAmount(e)
+    //     console.log(done)
+    // }))
 }
 
-function showAmount(e) {
-    let amounts = e.style.height
-     amounts = amounts / 4;
-    // baby.innerText = amounts
-    info.appendChild(amounts)
-}
+// function showAmount(target) {
+//     let amount = document.createElement('span')
+//     let amounts = target.style.height
 
+//     amount.innerText = amounts
+//     target.appendChild(amount)
+//     amount.appendChild(amounts)
+// }
+function showAmount() {
+    const ww = document.querySelectorAll('.ww')
+    ww.style.display = 'block';
+}
+// baby.addEventlistener('mouseover', showAmount())
+
+getBars.forEach(babys => babys.addEventListener('mouseover', showAmount))
 
 
