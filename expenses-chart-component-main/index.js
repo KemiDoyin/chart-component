@@ -1,5 +1,4 @@
 const chart = document.querySelector('.bar-chart')
-const getBars = document.querySelectorAll('.bars')
 
 
 
@@ -46,27 +45,26 @@ function getCharts(display) {
         let barchart = barChart(item.day, item.amount)
         chart.appendChild(barchart)
     })
+    const getBars = document.querySelectorAll('.bars')
+    getBars.forEach(element =>{
+        element.addEventListener('mouseover', () => {
+            show()
+        })
+    })
 
-    // baby.forEach(babys => babys.addEventListener('mouseover', () => {
-    //     showAmount(e)
-    //     console.log(done)
-    // }))
 }
-
-// function showAmount(target) {
-//     let amount = document.createElement('span')
-//     let amounts = target.style.height
-
-//     amount.innerText = amounts
-//     target.appendChild(amount)
-//     amount.appendChild(amounts)
+// function show(target) {
+//     // const ww = document.querySelectorAll('.ww');
+//     const def = createElement('span','we')
+//     let val = target.style.height
+//     def.innerText = val
+//     target.appendChild(def)
+//             // ww.style.display = 'block';
 // }
-function showAmount() {
-    const ww = document.querySelectorAll('.ww')
+
+function show() {
+    const ww = document.querySelectorAll('.ww');
     ww.style.display = 'block';
 }
-// baby.addEventlistener('mouseover', showAmount())
-
-getBars.forEach(babys => babys.addEventListener('mouseover', showAmount))
 
 
