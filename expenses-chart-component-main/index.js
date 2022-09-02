@@ -1,28 +1,59 @@
-const chart = document.querySelector('bar-chart')
-const graphy = document.querySelector('graphy')
-// function displayChart() {
-//     chart.forEach(()  => {
-//     const graph = 
-//     `
-//     <div class="bar-chart">
-//             <div class="amount">${data.amount}</div>
-//             <div class="day">${data.day}</div>
-//           </div>
-//     `
+const chart = document.querySelector('.bar-chart')
+
+
+let day = new Date().getDay()
+
+
+async function displayChart() {
+    const res = await fetch ('data.json');
+    const data = await res.json();
+    getCharts(data);
+    console.log(data);
+}
+
+displayChart();
+
+function createElement(elements, hasClass) {
+    const getElem = document.createElement(elements);
+    if(hasClass) {
+        getElem.className = hasClass;
+    }
+    return getElem;
+}
+
+function barChart(day,amount) {
+    const graph = createElement( 'div','width');
+    const bars = createElement('div', 'bars');
+    bars.style.height = `${amount * 3}px`;
     
-//     graphy.innerHTML = graph
-//     })
-// }
- const play = async ()=> {
-    try {
-        const res = await fetch ('data.json')
-        const data = await res.json()
-        // displayChart(data)
-        // console.log(data[0].amount)
-        console.log(data)
-    }
-    catch {
-        console.log('error')
-    }
- }
- play()
+    const days = document.createElement('h3');
+    days.textContent = day
+
+    graph.appendChild(bars)
+    graph.appendChild(days)
+
+    return graph;
+}
+
+
+function getCharts(display) {
+    display.forEach(item => {
+        let barchart = barChart(item.day, item.amount)
+        chart.appendChild(barchart)
+    })
+    // if(day === 0){
+    //     day = 7
+    // }
+    chart.forEach(charts => charts.addEventListener('mouseover', (e) => {
+        showAmount(e)
+    }))
+}
+
+function showAmount(info) {
+    let amounts = info.style.height
+    //  amounts = tar.value
+    bar.textContent = amounts
+}
+
+
+
