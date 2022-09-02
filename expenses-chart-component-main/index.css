@@ -88,6 +88,12 @@ h2 {
     cursor: pointer;
     /* z-index: 900; */
 }
+.ww {
+    display: none;
+    /* display: block; */
+    background-color: black;
+    color: white;
+}
 .bar-chart:nth-of-type(3) {
     background-color: var(--Cyan);
     
