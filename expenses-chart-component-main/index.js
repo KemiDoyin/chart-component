@@ -48,7 +48,10 @@ function getCharts(display) {
     const getBars = document.querySelectorAll('.bars')
     getBars.forEach(element =>{
         element.addEventListener('mouseover', () => {
-            show()
+            show(element);
+        })
+        element.addEventListener('mouseout', () => {
+            element.previousSibling.style.display = 'none';
         })
     })
 
@@ -62,9 +65,6 @@ function getCharts(display) {
 //             // ww.style.display = 'block';
 // }
 
-function show() {
-    const ww = document.querySelectorAll('.ww');
-    ww.style.display = 'block';
+function show(element) {
+    element.previousSibling.style.display = 'block';
 }
-
-
