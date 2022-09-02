@@ -1,4 +1,5 @@
 const chart = document.querySelector('.bar-chart')
+const baby = document.querySelectorAll('.bar')
 
 
 let day = new Date().getDay()
@@ -41,18 +42,18 @@ function getCharts(display) {
         let barchart = barChart(item.day, item.amount)
         chart.appendChild(barchart)
     })
-    // if(day === 0){
-    //     day = 7
-    // }
-    chart.forEach(charts => charts.addEventListener('mouseover', (e) => {
-        showAmount(e)
+
+    baby.forEach(babys => babys.addEventListener('mouseover', () => {
+        // showAmount(e)
+        console.log(done)
     }))
 }
 
-function showAmount(info) {
-    let amounts = info.style.height
-    //  amounts = tar.value
-    bar.textContent = amounts
+function showAmount(e) {
+    let amounts = e.style.height
+     amounts = amounts / 4;
+    // baby.innerText = amounts
+    info.appendChild(amounts)
 }
 
 
